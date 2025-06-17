@@ -1,0 +1,176 @@
+/* Lord of the Rings Twitter Clone Styles */
+
+body {
+  background: url('https://www.transparenttextures.com/patterns/old-mathematics.png'), #f5ecd6;
+  background-size: cover;
+  font-family: 'Georgia', serif;
+  min-height: 100vh;
+}
+
+.parchment-bg {
+  background: rgba(245, 236, 214, 0.95);
+  border: 2px solid #bfa76f;
+  box-shadow: 0 0 30px #bfa76f66;
+}
+
+.lotr-title {
+  font-family: 'UnifrakturCook', cursive;
+  color: #3e2c00;
+  letter-spacing: 2px;
+  text-shadow: 2px 2px 8px #bfa76f99;
+}
+
+#toggle-mode {
+  font-family: 'UnifrakturCook', cursive;
+  background: #222;
+  border: none;
+  color: #f5ecd6;
+}
+
+#toggle-mode.active {
+  background: #f5ecd6;
+  color: #222;
+  border: 1px solid #bfa76f;
+}
+
+#sort-dropdown {
+  background: #bfa76f;
+  color: #3e2c00;
+  border: 1px solid #3e2c00;
+}
+
+.tweet-card {
+  background: #fffbe6;
+  border: 1.5px solid #bfa76f;
+  border-radius: 12px;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 2px 8px #bfa76f33;
+  padding: 1rem;
+}
+
+.tweet-user {
+  font-weight: bold;
+  color: #3e2c00;
+  font-family: 'UnifrakturCook', cursive;
+}
+
+.tweet-time {
+  color: #7c6f57;
+  font-size: 0.95em;
+}
+
+.tweet-text {
+  font-size: 1.15em;
+  margin: 0.5em 0 0.7em 0;
+}
+
+.tweet-reactions {
+  font-size: 1em;
+  color: #6d4c1b;
+}
+
+.btn-praise, .btn-curse {
+  font-family: 'UnifrakturCook', cursive;
+  font-size: 1em;
+  margin-right: 0.5em;
+  border: none;
+  border-radius: 6px;
+  padding: 0.3em 0.8em;
+  transition: background 0.2s;
+}
+
+.btn-praise {
+  background: #bfa76f;
+  color: #3e2c00;
+}
+.btn-praise:hover {
+  background: #e2c97a;
+}
+
+.btn-curse {
+  background: #3e2c00;
+  color: #f5ecd6;
+}
+.btn-curse:hover {
+  background: #7c6f57;
+}
+
+.comment-section {
+  background: #f5ecd6;
+  border-radius: 8px;
+  padding: 0.7em 1em;
+  margin-top: 1em;
+  border: 1px solid #bfa76f;
+}
+
+.comment {
+  border-bottom: 1px dashed #bfa76f;
+  padding: 0.3em 0;
+  font-size: 0.98em;
+}
+.comment:last-child {
+  border-bottom: none;
+}
+.comment-user {
+  font-weight: bold;
+  color: #3e2c00;
+  font-family: 'UnifrakturCook', cursive;
+}
+.comment-time {
+  color: #7c6f57;
+  font-size: 0.9em;
+}
+
+.create-comment-form input,
+.create-comment-form textarea {
+  font-size: 0.95em;
+  margin-bottom: 0.3em;
+}
+
+/* Mordor Mode (Dark Mode) */
+body.mordor-mode {
+  background: #181818 !important;
+}
+body.mordor-mode .parchment-bg {
+  background: #23201a !important;
+  border-color: #7c6f57;
+  box-shadow: 0 0 30px #000a;
+}
+body.mordor-mode .lotr-title {
+  color: #e2c97a;
+  text-shadow: 2px 2px 8px #000a;
+}
+body.mordor-mode .tweet-card {
+  background: #23201a;
+  color: #e2c97a;
+  border-color: #7c6f57;
+}
+body.mordor-mode .tweet-user,
+body.mordor-mode .comment-user {
+  color: #e2c97a;
+}
+body.mordor-mode .tweet-reactions {
+  color: #e2c97a;
+}
+body.mordor-mode .btn-praise {
+  background: #7c6f57;
+  color: #e2c97a;
+}
+body.mordor-mode .btn-curse {
+  background: #e2c97a;
+  color: #23201a;
+}
+body.mordor-mode .comment-section {
+  background: #181818;
+  border-color: #7c6f57;
+  color: #e2c97a;
+}
+body.mordor-mode #toggle-mode {
+  background: #e2c97a;
+  color: #23201a;
+}
+body.mordor-mode #sort-dropdown {
+  background: #7c6f57;
+  color: #e2c97a;
+  border-color: #e2c97a;
+}
