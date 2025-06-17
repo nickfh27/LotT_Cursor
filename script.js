@@ -113,14 +113,7 @@ $(function () {
     loadTweets();
   });
 
-  // 8. Mordor Mode Toggle
-  $('#toggle-mode').on('click', function() {
-    $('body').toggleClass('mordor-mode');
-    $(this).toggleClass('active');
-    $(this).text($('body').hasClass('mordor-mode') ? 'Shire View' : 'Mordor Mode');
-  });
-
-  // 9. Tweet erstellen
+  // 8. Tweet erstellen
   $('#create-note-form').on('submit', function(e) {
     e.preventDefault();
     var formData = $(this).serialize();
@@ -166,7 +159,7 @@ $(function () {
     // Kommentarformular
     commentsHtml += `
       <form class="create-comment-form mt-2" data-tweetid="${tweet.id}">
-        <input type="text" name="user" placeholder="Orc-Name" required class="form-control form-control-sm mb-1" />
+        <input type="text" name="user" placeholder="Name" required class="form-control form-control-sm mb-1" />
         <input type="text" name="text" placeholder="Dein Kommentar" required class="form-control form-control-sm mb-1" />
         <button type="submit" class="btn btn-sm btn-secondary">Kommentieren</button>
       </form>
@@ -179,8 +172,8 @@ $(function () {
         </div>
         <div class="tweet-text">${escapeHtml(tweet.text)}</div>
         <div class="tweet-reactions my-2">
-          <button class="btn-praise btn btn-sm" data-vote="upvote">Give Praise (${tweet.reactions})</button>
-          <button class="btn-curse btn btn-sm" data-vote="downvote">Curse This</button>
+          <button class="btn-praise btn btn-sm" data-vote="upvote">Loben (${tweet.reactions})</button>
+          <button class="btn-curse btn btn-sm" data-vote="downvote">Verfluchen</button>
         </div>
         <div class="comment-section">
           <div class="mb-1"><b>Kommentare:</b></div>

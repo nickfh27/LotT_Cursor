@@ -12,19 +12,16 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="styles.css" />
-    <!-- Elbische Schriftart (Google Fonts) -->
-    <link href="https://fonts.googleapis.com/css2?family=UnifrakturCook:wght@700&display=swap" rel="stylesheet">
   </head>
   <body>
     <div class="container parchment-bg p-3 rounded shadow-lg mt-4">
       <div class="d-flex justify-content-between align-items-center mb-3">
-        <h1 class="lotr-title">One Tweet to Rule Them All</h1>
+        <h1 class="lotr-title">Ein Tweet, sie zu knechten</h1>
         <div>
           <select id="sort-dropdown" class="form-select d-inline-block w-auto me-2">
             <option value="popular">Meist gelobt</option>
             <option value="new">Neueste</option>
           </select>
-          <button id="toggle-mode" class="btn btn-dark">Mordor Mode</button>
         </div>
       </div>
 
@@ -33,17 +30,17 @@
         <input
           type="text"
           name="user"
-          placeholder="Username"
+          placeholder="Name"
           required
           class="form-control mb-2"
         />
         <textarea
           name="text"
-          placeholder="What's happening?"
+          placeholder="Was passiert in Mordor?"
           required
           class="form-control mb-2"
         ></textarea>
-        <button type="submit" class="btn btn-primary">Tweet</button>
+        <button type="submit" class="btn btn-primary">Dem Dunklen Herrscher melden</button>
       </form>
 
       <!-- Posts Container -->
@@ -57,6 +54,7 @@
       crossorigin="anonymous"
     ></script>
     <script src="moment.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/locale/de.js"></script>
     <script src="script.js"></script>
   </body>
 </html>
