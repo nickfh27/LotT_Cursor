@@ -116,11 +116,10 @@ $(function () {
   // 8. Tweet erstellen
   $('#create-note-form').on('submit', function(e) {
     e.preventDefault();
-    var formData = $(this).serialize();
     $.post(
       "https://www.nafra.at/adad_st2025/project/",
-      formData,
-      function (response) {
+      $(this).serialize(),
+      function () {
         loadTweets();
         $('#create-note-form')[0].reset();
       }
@@ -133,35 +132,25 @@ $(function () {
       "https://www.nafra.at/adad_st2025/project/?sort=" + sort,
       function (data) {
         $('#posts-container').empty();
-        data.forEach(function(tweet) {
-          var tweetHtml = renderTweet(tweet);
-          $('#posts-container').append(tweetHtml);
-        });
+        data.forEach(tweet => $('#posts-container').append(renderTweet(tweet)));
       }
     );
   }
 
   // 11. Tweet-HTML generieren
   function renderTweet(tweet) {
-    var timeAgo = moment(tweet.created_at).fromNow();
-    var commentsHtml = '';
-    if (tweet.comments && tweet.comments.length > 0) {
-      tweet.comments.forEach(function(comment) {
-        commentsHtml += `
-          <div class="comment">
-            <span class="comment-user">${escapeHtml(comment.user)}</span>:
-            <span class="comment-text">${escapeHtml(comment.text)}</span>
-            <span class="comment-time">(${moment(comment.created_at).fromNow()})</span>
-          </div>
-        `;
-      });
-    }
-    // Kommentarformular
-    commentsHtml += `
+    const timeAgo = moment(tweet.created_at).fromNow();
+    const commentsHtml = (tweet.comments || []).map(comment => `
+      <div class="comment">
+        <span class="comment-user">${escapeHtml(comment.user)}</span>:
+        <span class="comment-text">${escapeHtml(comment.text)}</span>
+        <span class="comment-time">(${moment(comment.created_at).fromNow()})</span>
+      </div>
+    `).join('') + `
       <form class="create-comment-form mt-2" data-tweetid="${tweet.id}">
-        <input type="text" name="user" placeholder="Name" required class="form-control form-control-sm mb-1" />
-        <input type="text" name="text" placeholder="Dein Kommentar" required class="form-control form-control-sm mb-1" />
-        <button type="submit" class="btn btn-sm btn-secondary">Kommentieren</button>
+        <input type="text" name="user" placeholder="Name" required />
+        <input type="text" name="text" placeholder="Dein Kommentar" required />
+        <button type="submit">Kommentieren</button>
       </form>
     `;
     return `
@@ -172,8 +161,8 @@ $(function () {
         </div>
         <div class="tweet-text">${escapeHtml(tweet.text)}</div>
         <div class="tweet-reactions my-2">
-          <button class="btn-praise btn btn-sm" data-vote="upvote">Loben (${tweet.reactions})</button>
-          <button class="btn-curse btn btn-sm" data-vote="downvote">Verfluchen</button>
+          <button class="btn-praise" data-vote="upvote">Loben (${tweet.reactions})</button>
+          <button class="btn-curse" data-vote="downvote">Verfluchen</button>
         </div>
         <div class="comment-section">
           <div class="mb-1"><b>Kommentare:</b></div>
@@ -185,43 +174,30 @@ $(function () {
 
   // 12. Like/Dislike (Vote) Buttons
   $('#posts-container').on('click', '.btn-praise, .btn-curse', function() {
-    var tweetID = $(this).closest('.tweet-card').data('tweetid');
-    var voteType = $(this).data('vote');
+    const tweetID = $(this).closest('.tweet-card').data('tweetid');
+    const voteType = $(this).data('vote');
     $.get(
       "https://www.nafra.at/adad_st2025/project/" + tweetID + "?type=" + voteType,
-      function (data) {
-        loadTweets();
-      }
+      loadTweets
     );
   });
 
   // 13. Kommentar absenden
   $('#posts-container').on('submit', '.create-comment-form', function(e) {
     e.preventDefault();
-    var tweetID = $(this).data('tweetid');
-    var formData = $(this).serialize();
-    var form = this;
+    const tweetID = $(this).data('tweetid');
     $.post(
       "https://www.nafra.at/adad_st2025/project/" + tweetID,
-      formData,
-      function (response) {
-        loadTweets();
-      }
+      $(this).serialize(),
+      loadTweets
     );
   });
 
   // 14. Hilfsfunktion für XSS-Schutz
   function escapeHtml(text) {
-    return text
-      .replace(/&/g, "&amp;")
-      .replace(/</g, "&lt;")
-      .replace(/>/g, "&gt;")
-      .replace(/"/g, "&quot;")
-      .replace(/'/g, "&#039;");
+    return text.replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;','\'':'&#039;'}[c]));
   }
 
   // 15. Moment.js auf Deutsch
-  if (typeof moment !== 'undefined') {
-    moment.locale('de');
-  }
+  if (typeof moment !== 'undefined') moment.locale('de');
 });

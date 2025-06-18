@@ -1,154 +1,153 @@
-/* Lord of the Rings Twitter Clone Styles */
+:root {
+  --gold: #d4af37;
+  --gold-dark: #bfa133;
+  --beige: #f5e6b2;
+  --dark: #222;
+  --dark2: #2d2d2d;
+  --dark3: #23201a;
+  --shadow: #0008;
+  --shadow-strong: #000a;
+  --font-main: 'Ringbearer', serif;
+}
 
-@import url('https://fonts.cdnfonts.com/css/ringbearer');
-
+/* Grundlayout */
 body {
-  background: linear-gradient(135deg, #222 0%, #444 100%);
-  color: #f5e6b2;
-  font-family: 'Ringbearer', serif;
+  background: linear-gradient(135deg, var(--dark) 0%, #444 100%);
+  color: var(--beige);
+  font-family: var(--font-main);
   margin: 0;
   padding: 0;
 }
 
+.container {
+  width: 90%;
+  max-width: min(1920px, 100vw);
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+
+/* Titel */
 .lotr-title {
-  font-family: 'Ringbearer', serif;
-  color: #d4af37;
+  color: var(--gold);
   font-size: 4rem;
   letter-spacing: 0.08em;
-  text-shadow: 3px 3px 8px #000, 0 0 2px #d4af37;
+  text-shadow: 3px 3px 8px #000, 0 0 2px var(--gold);
   text-align: center;
-  margin-top: 1.5rem;
-  margin-bottom: 2rem;
+  margin: 1.5rem 0 2rem 0;
   font-weight: normal;
 }
 
-.btn-primary {
-  background-color: #d4af37;
-  border: none;
-  color: #222;
-  font-family: 'Ringbearer', serif;
-  font-size: 1.2rem;
-  box-shadow: 0 2px 8px #0008;
+/* Sortier-Dropdown */
+.sort-dropdown-wrapper {
+  position: relative;
+  display: inline-block;
+  width: 160px;
+  margin-left: auto;
 }
-.btn-primary:hover {
-  background-color: #bfa133;
+#sort-dropdown {
+  background: var(--gold);
+  color: var(--dark);
+  border: 1px solid var(--gold-dark);
+  font-family: var(--font-main);
+  font-size: 1.1rem;
+  width: 100%;
+  padding-right: 2em;
+}
+#sort-dropdown:hover {
+  background: var(--gold-dark);
   color: #fffbe6;
 }
-
-#posts-container {
-  margin-top: 2rem;
+.sort-dots {
+  position: absolute;
+  right: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  font-size: 1.2em;
+  color: var(--dark, #000);
 }
 
+/* Buttons */
+.btn-primary, .btn-praise, .btn-curse {
+  background: var(--gold);
+  color: var(--dark);
+  font-family: var(--font-main);
+  border: none;
+  box-shadow: 0 2px 8px var(--shadow);
+}
+.btn-primary:hover, .btn-praise:hover, .btn-curse:hover {
+  background: var(--gold-dark);
+  color: #fffbe6;
+}
+.btn-praise, .btn-curse {
+  font-size: 1em;
+  margin-right: 0.5em;
+  border-radius: 6px;
+  padding: 0.3em 0.8em;
+}
+
+/* Cards & Tweets */
+#posts-container { margin-top: 2rem; }
 .tweet-card {
-  background: #2d2d2d;
-  border: 1px solid #d4af37;
-  color: #f5e6b2;
-  font-family: 'Ringbearer', serif;
-  box-shadow: 0 2px 8px #000a;
+  background: var(--dark2);
+  border: 1px solid var(--gold);
+  color: var(--beige);
+  font-family: var(--font-main);
+  box-shadow: 0 2px 8px var(--shadow-strong);
   border-radius: 10px;
   margin-bottom: 2rem;
   padding: 1.2rem;
 }
-
-.tweet-user {
+.tweet-user, .comment-user {
   font-weight: bold;
-  color: #d4af37;
-  font-family: 'Ringbearer', serif;
-  font-size: 1.3rem;
+  color: var(--gold);
+  font-family: var(--font-main);
 }
+.tweet-user { font-size: 1.3rem; }
+.tweet-time, .comment-time { color: var(--gold-dark); font-size: 1em; }
+.comment-time { font-size: 0.9em; }
+.tweet-text { font-size: 1.2em; margin: 0.5em 0 0.7em 0; }
+.tweet-reactions { font-size: 1em; color: var(--gold); margin-bottom: 0.5em; }
 
-.tweet-time {
-  color: #bfa133;
-  font-size: 1em;
-}
-
-.tweet-text {
-  font-size: 1.2em;
-  margin: 0.5em 0 0.7em 0;
-}
-
-.tweet-reactions {
-  font-size: 1em;
-  color: #d4af37;
-  margin-bottom: 0.5em;
-}
-
-.btn-praise, .btn-curse {
-  font-family: 'Ringbearer', serif;
-  font-size: 1em;
-  margin-right: 0.5em;
-  border: none;
-  border-radius: 6px;
-  padding: 0.3em 0.8em;
-  background: #d4af37;
-  color: #222;
-  box-shadow: 0 2px 8px #0008;
-}
-.btn-praise:hover, .btn-curse:hover {
-  background: #bfa133;
-  color: #fffbe6;
-}
-
+/* Kommentare */
 .comment-section {
-  background: #23201a;
+  background: var(--dark3);
   border-radius: 8px;
   padding: 0.7em 1em;
   margin-top: 1em;
-  border: 1px solid #d4af37;
+  border: 1px solid var(--gold);
 }
-
 .comment {
-  border-bottom: 1px dashed #d4af37;
+  border-bottom: 1px dashed var(--gold);
   padding: 0.3em 0;
   font-size: 1em;
 }
-.comment:last-child {
-  border-bottom: none;
-}
-.comment-user {
-  font-weight: bold;
-  color: #d4af37;
-  font-family: 'Ringbearer', serif;
-}
-.comment-time {
-  color: #bfa133;
-  font-size: 0.9em;
-}
+.comment:last-child { border-bottom: none; }
 
-.create-comment-form input,
-.create-comment-form textarea {
+/* Formulare */
+input, textarea, button, select, .create-comment-form input, .create-comment-form textarea {
   font-size: 1em;
   margin-bottom: 0.3em;
-  font-family: 'Ringbearer', serif;
+  font-family: var(--font-main) !important;
 }
 
-#sort-dropdown {
-  background: #d4af37;
-  color: #222;
-  border: 1px solid #bfa133;
-  font-family: 'Ringbearer', serif;
-  font-size: 1.1rem;
-  margin-right: 0.5em;
-  width: auto;
-  display: inline-block;
-}
-
-.container {
-  width: 100%;
-  max-width: none;
-  margin: 0 auto;
-  padding: 2rem 2vw;
-  box-sizing: border-box;
-}
-
-@media (max-width: 600px) {
-  .container {
-    padding: 1rem 0.5rem;
+/* Responsive */
+@media (max-width: 1024px) {
+  .container { padding: 1rem 0.5rem; }
+  .lotr-title { font-size: 2.2rem; }
+  .tweet-card { padding: 0.7rem; }
+  .d-flex.justify-content-between.align-items-center.mb-3 {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 0.5rem;
   }
-  .lotr-title {
-    font-size: 2.2rem;
+  .sort-dropdown-wrapper {
+    width: 150px;
+    margin-left: auto;
+    margin-top: 0.5rem;
   }
-  .tweet-card {
-    padding: 0.7rem;
-  }
+  .sort-dots { right: 4px; font-size: 1em; }
+  #sort-dropdown { padding-right: 1.5em !important; }
 }
