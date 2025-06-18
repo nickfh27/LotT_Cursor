@@ -139,12 +139,12 @@ $(function () {
 
   // 11. Tweet-HTML generieren
   function renderTweet(tweet) {
-    const timeAgo = moment(tweet.created_at).fromNow();
+    const timeAgo = moment(tweet.timestamp).fromNow();
     const commentsHtml = (tweet.comments || []).map(comment => `
       <div class="comment">
         <span class="comment-user">${escapeHtml(comment.user)}</span>:
         <span class="comment-text">${escapeHtml(comment.text)}</span>
-        <span class="comment-time">(${moment(comment.created_at).fromNow()})</span>
+        <span class="comment-time">(${moment(comment.timestamp).fromNow()})</span>
       </div>
     `).join('') + `
       <form class="create-comment-form mt-2" data-tweetid="${tweet.id}">
