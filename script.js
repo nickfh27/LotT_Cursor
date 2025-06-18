@@ -161,7 +161,7 @@ $(function () {
         </div>
         <div class="tweet-text">${escapeHtml(tweet.text)}</div>
         <div class="tweet-reactions my-2">
-          <button class="btn-praise" data-vote="upvote">Loben (${tweet.reactions})</button>
+          <button class="btn-praise" data-vote="upvote">Aufheizen (${tweet.reactions})</button>
           <button class="btn-curse" data-vote="downvote">Verfluchen</button>
         </div>
         <div class="comment-section">
