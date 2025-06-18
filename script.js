@@ -18,7 +18,8 @@ $(function () {
   // 2.1. Fetch the data from the server
   // Hint: Within this task, you can easyly handle the task #1 of the challenge requirements by dynamically updating the filter parameter
   // Hint: See the referencing example from our lecture: https://codesandbox.io/p/sandbox/referencing-4z7ltd/
-  var sort = "popular"; // Update this to "popular" to sort by popularity
+  var sort = localStorage.getItem('lotr_sort') || "popular";
+  $('#sort-dropdown').val(sort);
   loadTweets();
 
   // 2.2. Display the received data
@@ -110,12 +111,14 @@ $(function () {
   // 7. Sortier-Dropdown
   $('#sort-dropdown').on('change', function() {
     sort = $(this).val();
+    localStorage.setItem('lotr_sort', sort);
     loadTweets();
   });
 
   // 8. Tweet erstellen
   $('#create-note-form').on('submit', function(e) {
     e.preventDefault();
+    $('#create-note-form button[type="submit"]').blur();
     $.post(
       "https://www.nafra.at/adad_st2025/project/",
       $(this).serialize(),
@@ -161,8 +164,12 @@ $(function () {
         </div>
         <div class="tweet-text">${escapeHtml(tweet.text)}</div>
         <div class="tweet-reactions my-2">
-          <button class="btn-praise" data-vote="upvote">Aufheizen (${tweet.reactions})</button>
-          <button class="btn-curse" data-vote="downvote">Verfluchen</button>
+          <button class="btn-praise" data-vote="upvote">
+            Aufheizen 🔥 (${tweet.reactions})
+          </button>
+          <button class="btn-curse" data-vote="downvote">
+            Verfluchen 💀
+          </button>
         </div>
         <div class="comment-section">
           <div class="mb-1"><b>Kommentare:</b></div>

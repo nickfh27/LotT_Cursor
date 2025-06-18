@@ -18,13 +18,6 @@
     <div class="container parchment-bg p-3 rounded shadow-lg mt-4">
       <div class="d-flex justify-content-between align-items-center mb-3">
         <h1 class="lotr-title">Ein Tweet, sie zu knechten</h1>
-        <div class="sort-dropdown-wrapper">
-          <select id="sort-dropdown" class="form-select" style="padding-right:2em;">
-            <option value="popular">Machtvoll</option>
-            <option value="new">Brandneu</option>
-          </select>
-          <span class="sort-dots">⋯</span>
-        </div>
       </div>
 
       <!-- Create New Note Form -->
@@ -34,16 +27,31 @@
           name="user"
           placeholder="Name"
           required
-          class="form-control mb-2"
+          class="form-control mb-2 form-narrow"
         />
         <textarea
           name="text"
           placeholder="Was passiert in Mordor?"
           required
-          class="form-control mb-2"
+          class="form-control mb-2 form-narrow"
         ></textarea>
         <button type="submit" class="btn btn-primary">Dem Dunklen Herrscher melden</button>
       </form>
+
+      <!-- Sorting -->
+      <div class="dropdown-row">
+        <div class="sort-dropdown-wrapper">
+          <select id="sort-dropdown" class="form-select" style="padding-right:2em;">
+            <option value="popular">Machtvoll</option>
+            <option value="new">Brandneu</option>
+          </select>
+          <span class="sort-dots" aria-label="Filter">
+            <svg width="18" height="18" viewBox="0 0 24 24" style="vertical-align:middle;fill:#000;">
+              <path d="M3 5h18l-7 10v4l-4 2v-6z"/>
+            </svg>
+          </span>
+        </div>
+      </div>
 
       <!-- Posts Container -->
       <div id="posts-container"></div>

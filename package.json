@@ -7,7 +7,7 @@
     "start": "serve"
   },
   "keywords": ["html", "css"],
-  "author": "Saurons Code Orcs",
+  "author": "SauronsCodeOrcs",
   "license": "MIT",
   "devDependencies": {
     "serve": "11.2.0"
