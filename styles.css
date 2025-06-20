@@ -71,6 +71,10 @@ body {
   font-size: 1.2em;
   color: var(--dark, #000);
 }
+.sort-dots svg {
+  vertical-align: middle;
+  fill: #000;
+}
 
 /* Buttons */
 .btn-primary, .btn-praise, .btn-curse {
