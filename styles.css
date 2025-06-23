@@ -12,7 +12,8 @@
 
 /* Grundlayout */
 body {
-  background: linear-gradient(135deg, var(--dark) 0%, #444 100%);
+  background: url('philipsmordor.png') no-repeat center center fixed;
+  background-size: cover;
   color: var(--beige);
   font-family: var(--font-main);
   margin: 0;
@@ -70,6 +71,10 @@ body {
   pointer-events: none;
   font-size: 1.2em;
   color: var(--dark, #000);
+}
+.sort-dots svg {
+  vertical-align: middle;
+  fill: #000;
 }
 
 /* Buttons */
